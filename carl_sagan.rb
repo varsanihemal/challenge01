@@ -35,3 +35,51 @@ ghosts.each do |ghost|
     ghost_info += "has #{ghost[:net_worth]} dollars in the bank."
     puts ghost_info
 end
+
+# part 2 DOG API
+require 'net/http'
+require 'json'
+require 'pp'
+ 
+url = 'https://dog.ceo/api/breeds/list/all'
+uri = URI(url)
+response = Net::HTTP.get(uri)
+dog_breeds = JSON.parse(response) # Convert JSON data into Ruby data.
+pp dog_breeds # pp stands for pretty print.
+
+# Access the hash of dog breeds and sub-breeds
+dog_breeds = dog_breeds['message']
+
+# Print out the dog breeds and sub-breeds
+dog_breeds.each do |breed, sub_breeds|
+  puts "* #{breed.capitalize}"
+  if sub_breeds.any?
+    sub_breeds.each do |sub_breed|
+      puts "  * #{sub_breed.capitalize}"
+    end
+  end
+end
+
+
+require 'net/http'
+require 'json'
+
+url = 'https://data.winnipeg.ca/resource/d3jk-hb6j.json'
+uri = URI(url)
+response = Net::HTTP.get(uri)
+trees_data = JSON.parse(response)
+
+# Accessing the array of trees
+trees = trees_data
+
+# Initializing a counter for Ash trees
+ash_tree_count = 0
+
+# Iterating through each tree to count Ash trees
+trees.each do |tree|
+  if tree['common_name'] && tree['common_name'].downcase.include?('ash')
+    ash_tree_count += 1
+  end
+end
+
+puts "Total number of Ash trees in the city: #{ash_tree_count}"
