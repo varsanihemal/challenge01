@@ -22,6 +22,8 @@ example = [ 'test', 'a', 'is']
 time    = { :that => 'This', :period => '.'}
 puts "#{time[:that]} #{example[2]} #{example[1]} #{example[0]}#{time[:period]}"
 
+puts "#{carl[:words][2].capitalize} #{sagan[0][:are]} #{sagan[0]['A']} #{sagan[1]['waaaaaay']} #{carl[:words][1]} #{sagan[1][:th3]} #{carl[:toast]} #{sagan[3][2][0]} #{carl[:words][0]} #{sagan[2]}#{carl[:punctuation][1]}"
+
 ghosts = [
           { name: 'Inky', age: 4, loves: 'reindeers', net_worth: 25 },
           { name: 'Pinky', age: 5, loves: 'garden tools', net_worth: 14 },
@@ -40,7 +42,7 @@ end
 require 'net/http'
 require 'json'
 require 'pp'
- 
+
 url = 'https://dog.ceo/api/breeds/list/all'
 uri = URI(url)
 response = Net::HTTP.get(uri)
